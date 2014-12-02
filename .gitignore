@@ -41,3 +41,29 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+.idea/.name
+.idea/ant.xml
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/libraries/javax_inject_1.xml
+.idea/libraries/jaxrs_api_3_0_10_Final.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+.idea/workspace.xml
+out/test/tim_burns_example/org/timburns/example/service/CustomerServiceTest.class
+out/production/tim_burns_example/org/timburns/example/model/Customer.class
+build/classes/org/timburns/example/model/Customer.class
+build/classes/org/timburns/example/service/CustomerService.class
+build/classes/org/timburns/example/ui/CustomerHandler.class
+out/production/tim_burns_example/org/timburns/example/service/CustomerService.class
+*.class
+web/META-INF/MANIFEST.MF
+web/META-INF/maven/org.wildfly.quickstarts/wildfly-helloworld-html5/pom.properties
+web/META-INF/maven/org.wildfly.quickstarts/wildfly-helloworld-html5/pom.xml
+web_build/tim_burns.war
+web_build/tim_burns.zip

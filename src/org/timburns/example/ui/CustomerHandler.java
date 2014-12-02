@@ -16,6 +16,7 @@
  */
 package org.timburns.example.ui;
 
+import org.timburns.example.model.Customer;
 import org.timburns.example.service.CustomerService;
 
 import javax.inject.Inject;
@@ -53,8 +54,16 @@ public class CustomerHandler {
     @Path("/addCustomer")
     @Produces("application/json")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String addCustomer() {
-        return "" + customerService.getCustomers().toString() + "";
+    public String addCustomer(@FormParam("name") String name, @FormParam("address") String address ) {
+        System.out.println("name: " + name);
+        System.out.println("address: " + address);
+
+        Customer customer = new Customer();
+        customer.setName(name);
+        customer.setAddress(address);
+
+        customerService.add(customer);
+        return "[{\"Name\":\""+name+"\" }]";
     }
 
 }

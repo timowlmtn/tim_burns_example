@@ -18,11 +18,13 @@ function addCustomerEntry () {
 	console.log( $("#newCustomerFieldsEntryName").val() );
 
 	$.post('service/addCustomer',
-		{ name: $("#newCustomerFieldsEntryName").val(), address: $("#newCustomerFieldsEntryName").val() },
+		{
+			name: $("#newCustomerFieldsEntryName").val(),
+			address: $("#newCustomerFieldsEntryAddress").val()
+		},
 		function(response) {
     		console.log(response);
-		},
-	'json');
+		}, 'json');
 
 }
 
