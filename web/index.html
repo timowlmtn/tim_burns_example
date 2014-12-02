@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Customer Listing</title>
+</head>
+<link rel="stylesheet" href="css/styles.css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/customers.js"></script>
+
+<body>
+
+<h2>Customers</h2>
+<div id="customerListing">
+
+    <form id="newCustomer" class="newCustomerForm" onsubmit="addCustomerEntry()">
+        <fieldset>
+            <legend>New Customer:</legend>
+            <div id="newCustomerFields">
+                <div class="newCustomerFieldsEntry">Name: <input required autofocus id="newCustomerFieldsEntryName" name="newCustomerFieldsEntryName" type="text" value="New Item"></div>
+                <span class="error" ng-show="errors.name"></span>
+
+                <div class="newCustomerFieldsEntry">Address: <input id="newCustomerFieldsEntryAddress" name="newCustomerFieldsEntryAddress" type="text"></div>
+
+                <div id="newCustomerAction">
+                    <input type="submit" id="add" value="Add">
+                </div>
+
+            </div>
+
+        </fieldset>
+
+    </form>
+
+
+    <table id="customerListingTable" class="eXtremeTable">
+
+    </table>
+
+
+</div>
+
+<script language="JavaScript">
+   fetchCustomerPanel();
+</script>
+</body>
+</html>

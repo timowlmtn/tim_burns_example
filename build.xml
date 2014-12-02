@@ -1,0 +1,69 @@
+<project name="tim-burns-html5" default="deploy" basedir=".">
+    <property file="build.properties" />
+    <property name="module.name" value="tim_burns.jar" />
+    <property name="webapp.name" value="tim_burns.war" />
+    <property name="webapp.root.dir" value="${basedir}/web" />
+    <property name="src.dir" value="${basedir}/src" />
+    <property name="build.root.dir" value="${basedir}/build" />
+    <property name="build.web.dir" value="${basedir}/web_build" />
+    <property name="build.classes.dir" value="${basedir}/build/classes" />
+    <property name="common.lib.dir" value="${basedir}/lib" />
+    <property name="deploy.dir" value="../standalone/deployments" />
+
+    <path id="build.classpath">
+        <pathelement location="${basedir}/build/classes" />
+
+        <fileset dir="${common.lib.dir}/">
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+
+    <target name="clean" unless="no.clean">
+        <delete dir="${build.root.dir}" />
+    </target>
+
+    <target name="prepare" depends="clean">
+        <mkdir dir="${basedir}/build" />
+        <mkdir dir="${basedir}/build/classes" />
+        <mkdir dir="${basedir}/build/lib" />
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac debug="true" destdir="${build.classes.dir}" classpathref="build.classpath">
+            <src path="${src.dir}" />
+            <compilerarg line="-version" />
+        </javac>
+
+        <copy todir="${webapp.root.dir}/WEB-INF/classes">
+            <fileset dir="${build.classes.dir}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <target name="package" depends="compile">
+        <jar jarfile="${basedir}/../build/lib/${module.name}">
+            <fileset dir="${build.classes.dir}">
+                <include name="com/rsi/**" />
+            </fileset>
+        </jar>
+
+        <war warfile="${build.web.dir}/${webapp.name}" webxml="${webapp.root.dir}/WEB-INF/web.xml">
+            <fileset dir="${webapp.root.dir}">
+                <exclude name="**/web.xml"/>
+            </fileset>
+            <classes dir="${build.classes.dir}" includes="resources/**/*"/>
+            <lib dir="${basedir}/../build/lib/" includes="${module.name}" />
+        </war>
+    </target>
+
+    <target name="deploy" depends="package">
+        <copy todir="${deploy.dir}">
+            <fileset dir="${build.web.dir}">
+                <include name="${webapp.name}"/>
+            </fileset>
+        </copy>
+    </target>
+</project>
