@@ -24,7 +24,7 @@ public class CustomerService {
     }
 
     public List<Customer> getCustomers() {
-        return result;
+        return result; 
     }
 
     public void add(Customer customer) {
